@@ -69,7 +69,7 @@ import { NativeModules } from "react-native";
 
 const clientId = "YOUR-CLIENT-ID";
 const clientSecret = "YOUR-CLIENT-SECRET";
-const baseUrl = "DEEPVUE-SERVER-BASE-URL"; // e.g. pre-production.deepvue.tech/v1
+const baseUrl = "DEEPVUE-SERVER-BASE-URL"; // e.g. https://pre-production.deepvue.tech/v1
 
 // No need to set imageUrl in default mode else can be set as your own e.g. https://i.imgur.com/Mfn9Srw.jpeg
 const imageUrl = "YOUR-IMAGE-URL"; 
