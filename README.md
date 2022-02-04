@@ -67,12 +67,19 @@ You will need valid credentials to use the Deepvue Aadhaar Offline e-KYC React N
 //Import Native modules from react native
 import { NativeModules } from "react-native";
 
+const clientId = "YOUR-CLIENT-ID";
+const clientSecret = "YOUR-CLIENT-SECRET";
+const baseUrl = "DEEPVUE-SERVER-BASE-URL"; // e.g. pre-production.deepvue.tech/v1
+
+// No need to set imageUrl in default mode else can be set as your own e.g. https://i.imgur.com/Mfn9Srw.jpeg
+const imageUrl = "YOUR-IMAGE-URL"; 
+
 //use below code on button click to start offline kyc
 NativeModules.OkycHandler.initSdk(
-  "client-id",
-  "client-secret",
-  "base-url",
-  "custom-image-url",
+  clientId,
+  clientSecret,
+  baseUrl,
+  imageUrl, //no need to set this in case of default mode
   (response) => {
     console.log(response);
   },
