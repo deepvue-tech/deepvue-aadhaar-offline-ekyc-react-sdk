@@ -102,4 +102,4 @@ Following error codes will be returned on the `onFailure` method of the callback
 
 
 ## Help
-For any queries/feedback, contact us at `help@deepvue.tech` 
+For any queries/feedback, contact us at `hello@deepvue.tech` 
