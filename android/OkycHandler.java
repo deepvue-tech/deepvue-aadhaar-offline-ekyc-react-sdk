@@ -1,3 +1,5 @@
+package com.okycexample;
+
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -5,10 +7,9 @@ import com.facebook.react.bridge.ReactMethod;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 import androidx.annotation.NonNull;
-import sdk.deepvue.tech.offline_aadhaar_ekyc.AadharOfflineKycListener;
-import sdk.deepvue.tech.offline_aadhaar_ekyc.AadharOfflineSDK;
-import sdk.deepvue.tech.offline_aadhaar_ekyc.model.upload_xml.UploadXMLResponse;
 
 class OkycHandler extends ReactContextBaseJavaModule
 {
@@ -38,26 +39,22 @@ class OkycHandler extends ReactContextBaseJavaModule
         Callback failure
     )
     {
-        AadharOfflineSDK.INSTANCE.initialiseSDK(
-            clientId,
-            clientSecret,
-            baseUrl
-        ).setFaceMatch(false)
-            .setImage(imageUrl)
-            .setLanguage(AadharOfflineSDK.Languages.en)
-            .start(context, new AadharOfflineKycListener()
+        Objects.requireNonNull(context.getCurrentActivity()).runOnUiThread(() -> new OkycSdkHandler(new com.okycexample.Callback()
+        {
+            @Override
+            public void onSuccess(@NotNull String response)
             {
-                @Override
-                public void onKycSuccessResult(@NotNull UploadXMLResponse result)
-                {
-                    success.invoke(result.toJson());
-                }
+                success.invoke(response);
+            }
 
-                @Override
-                public void onFailure(int errorCode)
-                {
-                    failure.invoke(errorCode);
-                }
-            });
+            @Override
+            public void onFailure(int code)
+            {
+                failure.invoke(code);
+            }
+        }, baseUrl, clientId,
+            clientSecret,
+            false,
+            imageUrl.isEmpty() ? null : imageUrl).startSdk(context));
     }
 }
