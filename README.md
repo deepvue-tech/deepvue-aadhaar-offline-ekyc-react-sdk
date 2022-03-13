@@ -58,7 +58,7 @@ dependencies {
 5. After that, Copy below files and add to your `app` alongside `MainApplication.java` file
     - [OkycPackager.java](https://github.com/deepvue-tech/deepvue-aadhaar-offline-ekyc-react-sdk/blob/flutter_Wrapper/android/OkycPackager.java)
     - [OkycHandler.java](https://github.com/deepvue-tech/deepvue-aadhaar-offline-ekyc-react-sdk/blob/flutter_Wrapper/android/OkycHandler.java)
-    - [OkycSdkHandler.java](https://github.com/deepvue-tech/deepvue-aadhaar-offline-ekyc-react-sdk/blob/flutter_Wrapper/android/OkycSdkHandler.java)
+    - [OkycSdkHandler.java](https://github.com/deepvue-tech/deepvue-aadhaar-offline-ekyc-react-sdk/blob/flutter_Wrapper/android/OkycSdkHandler.kt)
 6. At last, Open up `android/app/src/main/java/[...]/MainApplication.java`
     - Add `new OkycPackager()` to the list returned by the `getPackages()` method
 
