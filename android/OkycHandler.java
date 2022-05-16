@@ -1,4 +1,4 @@
-package com.sampleapp;
+package com.okycexample;
 
 import static com.facebook.react.bridge.UiThreadUtil.runOnUiThread;
 
