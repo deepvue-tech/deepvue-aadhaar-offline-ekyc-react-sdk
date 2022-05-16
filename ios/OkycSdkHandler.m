@@ -1,9 +1,3 @@
-//
-//  OkycSdkHandler.m
-//  OkycReact
-//
-//  Created by Ayush Jain on 06/03/22.
-//
 #import "OkycSdkHandler.h"
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
@@ -60,5 +54,3 @@
 }
 
 @end
-
-
