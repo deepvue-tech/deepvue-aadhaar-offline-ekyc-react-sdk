@@ -1,4 +1,9 @@
-package com.okycexample;
+package com.sampleapp;
+
+import static com.facebook.react.bridge.UiThreadUtil.runOnUiThread;
+
+import android.content.Intent;
+import android.widget.Toast;
 
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -7,9 +12,10 @@ import com.facebook.react.bridge.ReactMethod;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
 
 import androidx.annotation.NonNull;
+
+import io.flutter.embedding.android.FlutterActivity;
 
 class OkycHandler extends ReactContextBaseJavaModule
 {
@@ -31,30 +37,34 @@ class OkycHandler extends ReactContextBaseJavaModule
 
     @ReactMethod
     void initSdk(
-        String clientId,
-        String clientSecret,
-        String baseUrl,
-        String imageUrl,
-        Callback success,
-        Callback failure
-    )
-    {
-        Objects.requireNonNull(context.getCurrentActivity()).runOnUiThread(() -> new OkycSdkHandler(new com.okycexample.Callback()
+            String clientId,
+            String clientSecret,
+            Boolean useFaceMatch,
+            String baseUrl,
+            String imageUrl,
+            Callback success,
+            Callback failure
+    ) {
+
+       (context.getCurrentActivity()).runOnUiThread(() -> new OkycSdkHandler(new OkycSdkHandlerCallback()
         {
+            @Override
+            public void onFailure(Integer code) {
+                failure.invoke(code);
+            }
+
             @Override
             public void onSuccess(@NotNull String response)
             {
                 success.invoke(response);
             }
 
-            @Override
-            public void onFailure(int code)
-            {
-                failure.invoke(code);
-            }
-        }, baseUrl, clientId,
-            clientSecret,
-            false,
-            imageUrl.isEmpty() ? null : imageUrl).startSdk(context));
+
+        },
+                baseUrl,
+                clientId,
+                clientSecret,
+                useFaceMatch,
+                imageUrl.isEmpty() ? null : imageUrl).startSdk(context));
     }
 }
