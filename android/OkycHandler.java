@@ -1,3 +1,10 @@
+package com.okycexample;
+
+import static com.facebook.react.bridge.UiThreadUtil.runOnUiThread;
+
+import android.content.Intent;
+import android.widget.Toast;
+
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -5,10 +12,10 @@ import com.facebook.react.bridge.ReactMethod;
 
 import org.jetbrains.annotations.NotNull;
 
+
 import androidx.annotation.NonNull;
-import sdk.deepvue.tech.offline_aadhaar_ekyc.AadharOfflineKycListener;
-import sdk.deepvue.tech.offline_aadhaar_ekyc.AadharOfflineSDK;
-import sdk.deepvue.tech.offline_aadhaar_ekyc.model.upload_xml.UploadXMLResponse;
+
+import io.flutter.embedding.android.FlutterActivity;
 
 class OkycHandler extends ReactContextBaseJavaModule
 {
@@ -30,34 +37,34 @@ class OkycHandler extends ReactContextBaseJavaModule
 
     @ReactMethod
     void initSdk(
-        String clientId,
-        String clientSecret,
-        String baseUrl,
-        String imageUrl,
-        Callback success,
-        Callback failure
-    )
-    {
-        AadharOfflineSDK.INSTANCE.initialiseSDK(
-            clientId,
-            clientSecret,
-            baseUrl
-        ).setFaceMatch(false)
-            .setImage(imageUrl)
-            .setLanguage(AadharOfflineSDK.Languages.en)
-            .start(context, new AadharOfflineKycListener()
-            {
-                @Override
-                public void onKycSuccessResult(@NotNull UploadXMLResponse result)
-                {
-                    success.invoke(result.toJson());
-                }
+            String clientId,
+            String clientSecret,
+            Boolean useFaceMatch,
+            String baseUrl,
+            String imageUrl,
+            Callback success,
+            Callback failure
+    ) {
 
-                @Override
-                public void onFailure(int errorCode)
-                {
-                    failure.invoke(errorCode);
-                }
-            });
+       (context.getCurrentActivity()).runOnUiThread(() -> new OkycSdkHandler(new OkycSdkHandlerCallback()
+        {
+            @Override
+            public void onFailure(Integer code) {
+                failure.invoke(code);
+            }
+
+            @Override
+            public void onSuccess(@NotNull String response)
+            {
+                success.invoke(response);
+            }
+
+
+        },
+                baseUrl,
+                clientId,
+                clientSecret,
+                useFaceMatch,
+                imageUrl.isEmpty() ? null : imageUrl).startSdk(context));
     }
 }
