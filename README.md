@@ -69,18 +69,18 @@ dependencies {
     
 1. Download our iOS dependencies from [here](https://deepvue-public-storage.s3.ap-south-1.amazonaws.com/offline-aadhaar-ekyc/ios/v0.0.2/deepvue-okyc-ios-plugin.zip).
 
-#### For Debug
+    #### For Debug
 
-2. Open Pod File and add `pod 'Flutter', :podspec => '[path to downloaded ios dependencies]/Debug/Flutter.podspec'`
-3. Go into your target’s `Build Settings > Build Phases > Link Binary With Libraries` and Drag all the content of `[path to downloaded iOS dependencies]/Debug/`.
-4. In the target’s `Build Settings`, add `$(PROJECT_DIR)/Flutter/Debug/` to the Framework Search Paths `FRAMEWORK_SEARCH_PATHS`.
-5. Click on the "+" icon and select `New Copy Files Phase`. Rename the item created to `Embed Frameworks` and set the `Destination` field to `Frameworks`. Drag the frameworks (except for `FlutterPluginRegistrant`) from your application’s Frameworks group into your target’s `Build Settings > Build Phases > Embed Frameworks`. Then, select Embed & Sign from the drop-down list.
+    2. Open Pod File and add `pod 'Flutter', :podspec => '[path to downloaded ios dependencies]/Debug/Flutter.podspec'`
+    3. Go into your target’s `Build Settings > Build Phases > Link Binary With Libraries` and Drag all the content of `[path to downloaded iOS dependencies]/Debug/`.
+    4. In the target’s `Build Settings`, add `$(PROJECT_DIR)/Flutter/Debug/` to the Framework Search Paths `FRAMEWORK_SEARCH_PATHS`.
+    5. Click on the "+" icon and select `New Copy Files Phase`. Rename the item created to `Embed Frameworks` and set the `Destination` field to `Frameworks`. Drag the frameworks (except for `FlutterPluginRegistrant`) from your application’s Frameworks group into your target’s `Build Settings > Build Phases > Embed Frameworks`. Then, select Embed & Sign from the drop-down list.
 
-#### For Release
-2. Open Pod File and add `pod 'Flutter', :podspec => '[path to downloaded ios dependencies]/Release/Flutter.podspec'`
-3. Go into your target’s `Build Settings > Build Phases > Link Binary With Libraries` and Drag all the content of `[path to downloaded iOS dependencies]/Release/`.
-4. In the target’s `Build Settings`, add `$(PROJECT_DIR)/Flutter/Release/` to the Framework Search Paths `FRAMEWORK_SEARCH_PATHS`.
-5. Click on the "+" icon and select `New Copy Files Phase`. Rename the item created to `Embed Frameworks` and set the `Destination` field to `Frameworks`. Drag the frameworks (except for `FlutterPluginRegistrant`) from your application’s Frameworks group into your target’s `Build Settings > Build Phases > Embed Frameworks`. Then, select Embed & Sign from the drop-down list.   
+    #### For Release
+    2. Open Pod File and add `pod 'Flutter', :podspec => '[path to downloaded ios dependencies]/Release/Flutter.podspec'`
+    3. Go into your target’s `Build Settings > Build Phases > Link Binary With Libraries` and Drag all the content of `[path to downloaded iOS dependencies]/Release/`.
+    4. In the target’s `Build Settings`, add `$(PROJECT_DIR)/Flutter/Release/` to the Framework Search Paths `FRAMEWORK_SEARCH_PATHS`.
+    5. Click on the "+" icon and select `New Copy Files Phase`. Rename the item created to `Embed Frameworks` and set the `Destination` field to `Frameworks`. Drag the frameworks (except for `FlutterPluginRegistrant`) from your application’s Frameworks group into your target’s `Build Settings > Build Phases > Embed Frameworks`. Then, select Embed & Sign from the drop-down list.   
 
 6. Copy below files and add to your `project` alongside `AppDelegate` file
     - [RCTOkycModule.m](https://github.com/deepvue-tech/deepvue-aadhaar-offline-ekyc-react-sdk/blob/master/ios/RCTOkycModule.m)
