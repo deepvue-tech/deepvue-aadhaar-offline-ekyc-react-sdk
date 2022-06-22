@@ -41,7 +41,7 @@ repositories {
 4. Add Dependency in your `app.build.gradle`
 ```
 dependencies {
-    implementation 'sdk.deepvue.tech.offline_aadhaar_ekyc:flutter_release:1.0'
+    implementation 'sdk.deepvue.tech.offline_aadhaar_ekyc:flutter_release:0.0.2'
     ...
 }
 ```
@@ -67,7 +67,7 @@ dependencies {
 
 #### IOS
     
-1. Download our iOS dependencies from [here](https://deepvue-public-storage.s3.ap-south-1.amazonaws.com/offline-aadhaar-ekyc/ios/deepvue-okyc-ios-plugin.zip).
+1. Download our iOS dependencies from [here](https://deepvue-public-storage.s3.ap-south-1.amazonaws.com/offline-aadhaar-ekyc/ios/v0.0.2/deepvue-okyc-ios-plugin.zip).
 
 #### For Debug
 
