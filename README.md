@@ -67,7 +67,7 @@ dependencies {
 
 #### IOS
     
-1. Download our iOS dependencies from [here](https://deepvue-public-storage.s3.ap-south-1.amazonaws.com/offline-aadhaar-ekyc/android/deepvue-okyc-ios-plugin.zip).
+1. Download our iOS dependencies from [here](https://deepvue-public-storage.s3.ap-south-1.amazonaws.com/offline-aadhaar-ekyc/ios/deepvue-okyc-ios-plugin.zip).
 
 #### For Debug
 
